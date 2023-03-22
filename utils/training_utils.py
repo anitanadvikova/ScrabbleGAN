@@ -23,20 +23,7 @@ class ModelCheckpoint:
             'R_sch': R_sch.state_dict()
         }
         torch.save(save_dict, filename)
-        
-    def saved(self, model, epoch, G_opt, D_opt, R_opt, G_sch=None, D_sch=None, R_sch=None):
-        filename = os.path.join('/content/drive/MyDrive', f'model_checkpoint_epoch_{epoch}.pth.tar')
-        save_dict = {
-            'model': model.state_dict(),
-            'G_opt': G_opt.state_dict(),
-            'D_opt': D_opt.state_dict(),
-            'R_opt': R_opt.state_dict(),
-            'epoch': epoch,
-            'G_sch': G_sch.state_dict(),
-            'D_sch': D_sch.state_dict(),
-            'R_sch': R_sch.state_dict()
-        }
-        torch.save(save_dict, filename)
+
     def load(self, model, epoch, optimizers=None, schedulers=None, checkpoint_path=None):
         [G_opt, D_opt, R_opt] = optimizers if optimizers is not None else [None]*3
         [G_sch, D_sch, R_sch] = schedulers if schedulers is not None else [None]*3
