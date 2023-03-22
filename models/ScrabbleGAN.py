@@ -81,10 +81,12 @@ class ScrabbleGAN(nn.Module):
             self.fake_words = self.fake_words.loc[self.fake_words.words.str.len() < 20]
             self.fake_words = self.fake_words.words.to_list()
         else:
-            exception_chars = ['ï', 'ü', '.', '_', 'ö', ',', 'ã', 'ñ']
-            self.fake_words = pd.read_csv(cfg.lexicon_file, '\t')['lemme']
-            self.fake_words = [word.split()[-1] for word in self.fake_words
-                               if (pd.notnull(word) and all(char not in word for char in exception_chars))]
+            fake_words = []
+
+            with open(cfg.lexicon_file, 'r') as f:
+                      fake_words.extend(f.read().splitlines())
+
+            self.fake_words = fake_words 
 
         fake_words_clean = []
         for word in self.fake_words:
