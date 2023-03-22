@@ -3,7 +3,7 @@ import torch
 
 class Config:
     dataset = 'RIMES'  # 'RIMES' / 'IAM'
-    data_folder_path = './RIMES/'  # relative to ./data/
+    data_folder_path ='/content/ScrabbleGAN/data/RIMES/'
     img_h = 32
     char_w = 16
     partition = 'tr'  # 'tr' / 'vl' / 'te'
@@ -19,8 +19,7 @@ class Config:
     grad_balance = True
 
     data_file = f'./data/{dataset}_{partition}_data.pkl'
-    lexicon_file_name = 'Lexique383.tsv' if dataset == 'RIMES' else 'words.txt'
-    lexicon_file = f'./data/Lexicon/{lexicon_file_name}'
+    lexicon_file = f'/content/drive/MyDrive/words_russian_5000.txt'
     lmdb_output = f'./data/{dataset}_{partition}_data'
 
     architecture = 'ScrabbleGAN'
@@ -48,6 +47,6 @@ class Config:
 
     # Noise vector
     z_dim = 128
-    num_chars = 74 if dataset == 'IAM' else 93
+    num_chars = 74 if dataset == 'IAM' else 108
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
