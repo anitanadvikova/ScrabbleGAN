@@ -250,9 +250,7 @@ class Trainer:
             # save latest checkpoint and after every 5 epochs
             self.model_checkpoint.save(self.model, epoch, self.G_optimizer, self.D_optimizer, self.R_optimizer,
                                        *self.schedulers)
-            
-            self.model_checkpoint.saved(self.model, epoch, self.G_optimizer, self.D_optimizer, self.R_optimizer,
-                                       *self.schedulers)
+
             
             if epoch > 1:
                 if (epoch % 5) != 1:
