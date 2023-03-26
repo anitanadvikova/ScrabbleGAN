@@ -19,7 +19,8 @@ class Config:
     grad_balance = True
 
     data_file = f'./data/{dataset}_{partition}_data.pkl'
-    lexicon_file = f'/content/drive/MyDrive/words_russian_5000.txt'
+    #lexicon_file = f'/content/drive/MyDrive/words_russian_5000.txt'
+    lexicon_file = f'./data/words_russian_5000.txt'
     lmdb_output = f'./data/{dataset}_{partition}_data'
 
     architecture = 'ScrabbleGAN'
